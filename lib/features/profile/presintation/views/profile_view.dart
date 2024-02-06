@@ -1,6 +1,9 @@
 import 'package:abu_hashem_fashion/core/widgets/custom_app_bar.dart';
+import 'package:abu_hashem_fashion/core/widgets/show_error_or_warning_dialog.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../../auth/presintation/views/login_view.dart';
 import 'widgets/list_tile.dart';
 import 'widgets/log_in_out_button.dart';
 import 'widgets/user_details.dart';
@@ -10,6 +13,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    User? user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
         title: customAppName(),
@@ -20,7 +24,7 @@ class ProfileView extends StatelessWidget {
           textDirection: TextDirection.rtl,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const UserDetails(),
+            Visibility(visible: user != null, child: const UserDetails()),
             //  Padding(
             //             padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
             //             child: Text(
@@ -83,8 +87,20 @@ class ProfileView extends StatelessWidget {
               endIndent: 7,
               indent: 7,
             ),
-            const Center(
-              child: LogInOutButton(),
+            Center(
+              child: LogInOutButton(
+                function: () async {
+                  showErrorORWarningDialog(
+                      context: context,
+                      subtitle: "تسجيل الخروج ",
+                      fct: () async {
+                        await FirebaseAuth.instance.signOut();
+                        Navigator.pushReplacementNamed(
+                            context, LogInView.routName);
+                      },
+                      isError: false);
+                },
+              ),
             ),
           ],
         ),

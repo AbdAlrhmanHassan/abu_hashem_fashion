@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "34103758731",
+    "project_id": "abu-hashem-fashion-demo",
+    "storage_bucket": "abu-hashem-fashion-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34103758731:android:b2b622eed15a2ae446a98e",
+        "android_client_info": {
+          "package_name": "com.example.abu_hashem_fashion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGnKl-5adyC0IwAHV8YJxgN8Vk28QthO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34103758731:android:d4d4d41daab5248b46a98e",
+        "android_client_info": {
+          "package_name": "com.example.abu_hashem_fashion_admin_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGnKl-5adyC0IwAHV8YJxgN8Vk28QthO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

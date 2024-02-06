@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../../core/consts/consts_photo.dart';
+import '../../../../../core/constants/consts_photo.dart';
 import '../../../../../core/style/font.dart';
 
 class Categories extends StatelessWidget {

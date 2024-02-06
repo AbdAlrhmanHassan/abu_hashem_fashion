@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-Widget customAppName() {
+Widget customAppName({Duration? duration}) {
   return Shimmer.fromColors(
-    period: const Duration(seconds: 8),
+    period: duration ?? const Duration(seconds: 8),
     baseColor: Colors.black,
     highlightColor: Colors.blue[200]!,
     child: const Text(

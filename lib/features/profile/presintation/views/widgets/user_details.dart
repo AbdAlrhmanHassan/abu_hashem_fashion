@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class UserDetails extends StatelessWidget {
@@ -7,30 +10,37 @@ class UserDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      log(user.displayName.toString());
+    }
+    String userImage = (user != null && user.photoURL != null)
+        ? user.photoURL!
+        : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CircleAvatar(
-          radius: 45,
-          backgroundImage: NetworkImage(
-              "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+        Visibility(
+          visible: user!.photoURL != null,
+          child: CircleAvatar(
+            radius: 45,
+            backgroundImage: NetworkImage(userImage),
+          ),
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(height: 14),
             Text(
-              "User Name ",
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              user != null ? user.displayName ?? " " : " ",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             SizedBox(height: 7),
             Text(
-              "UserEmail@gmail.com ",
-              style:
-                  TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+              user != null ? user.email ?? " " : " ",
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
             ),
           ],
         )

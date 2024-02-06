@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 
-import '../../../../../core/consts/consts_photo.dart';
+import '../../../../../core/constants/consts_photo.dart';
 
 class SwiperHomePage extends StatelessWidget {
   const SwiperHomePage({
