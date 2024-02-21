@@ -53,7 +53,6 @@ class CartViewBottom extends StatelessWidget {
         ),
         ElevatedButton(
             style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.all(16),
               backgroundColor: Colors.blue[100],
               side: const BorderSide(color: Colors.white, width: 0),
               shape: RoundedRectangleBorder(

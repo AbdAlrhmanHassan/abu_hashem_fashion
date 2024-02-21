@@ -1,14 +1,11 @@
 import 'dart:developer';
 
-import 'package:abu_hashem_fashion/core/widgets/bottom_navigation_bar.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-import 'package:google_sign_in/google_sign_in.dart';
 
 part 'auth_state.dart';
 

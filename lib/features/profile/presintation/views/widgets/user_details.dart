@@ -32,15 +32,15 @@ class UserDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(height: 14),
+            const SizedBox(height: 14),
             Text(
               user != null ? user.displayName ?? " " : " ",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
-            SizedBox(height: 7),
+            const SizedBox(height: 7),
             Text(
               user != null ? user.email ?? " " : " ",
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+              style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
             ),
           ],
         )

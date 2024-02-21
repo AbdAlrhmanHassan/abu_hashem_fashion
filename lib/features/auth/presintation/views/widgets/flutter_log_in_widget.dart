@@ -214,7 +214,7 @@ class _LoginPageState extends State<LoginPage> {
                   if (widget.errorMsg != null) {
                     // Display toast message with error
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      duration: Duration(seconds: 5),
+                      duration: const Duration(seconds: 5),
                       backgroundColor: Colors.red,
                       content: Text(widget.errorMsg!),
                     ));

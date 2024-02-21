@@ -1,16 +1,14 @@
 import 'package:abu_hashem_fashion/core/constants/screen_size.dart';
-import 'package:abu_hashem_fashion/core/data/models/product_model.dart';
-import 'package:abu_hashem_fashion/features/cart/presintation/admin/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:input_quantity/input_quantity.dart';
 
 import '../../../../../core/style/font.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key, required this.productModel});
+  const CartItem({
+    super.key,
+  });
 
-  final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -29,14 +27,14 @@ class CartItem extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
+                      const Row(
                         textDirection: TextDirection.rtl,
                         children: [
                           Text(
-                            productModel.productTitle,
+                            "تيشيرت من القطن بأكمام قصيرة",
                             overflow: TextOverflow.ellipsis,
                             textDirection: TextDirection.rtl,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                         ],
@@ -67,7 +65,7 @@ class CartItem extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 10)),
                               TextSpan(
-                                  text: productModel.productPrice,
+                                  text: "35.50",
                                   style: Styles.textStyle16.copyWith(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
@@ -80,8 +78,20 @@ class CartItem extends StatelessWidget {
                   ),
                 ),
               ),
+              // Shimmer.fromColors(
+              //   baseColor: Colors.grey[400]!,
+              //   highlightColor: Colors.grey[300]!,
+              //   period: Duration(seconds: 3),
+              //   direction: ShimmerDirection.rtl,
+              //   child: Image.network(
+              //     "https://static.massimodutti.net/3/photos//2024/V/0/1/p/6823/540/800/6823540800_1_1_16.jpg?t=1693385316266&impolicy=massimodutti-itxmediumhigh&imwidth=800&imformat=chrome",
+              //     width: (screenwidth / 3) - 10,
+              //     height: screenheight * .2,
+              //     fit: BoxFit.fill,
+              //   ),
+              // )
               Image.network(
-                productModel.productImageUrl,
+                "https://static.massimodutti.net/3/photos//2024/V/0/1/p/6823/540/800/6823540800_1_1_16.jpg?t=1693385316266&impolicy=massimodutti-itxmediumhigh&imwidth=800&imformat=chrome",
                 width: (getScreenWidth(context) / 3) - 10,
                 height: getScreenHight(context) * .2,
                 fit: BoxFit.fill,

@@ -52,7 +52,7 @@ class AbuHashemFashionApp extends StatelessWidget {
       home: Directionality(
         textDirection: TextDirection.rtl,
         child: SplashView(
-          logo: customAppName(duration: Duration(seconds: 3)),
+          logo: customAppName(duration: const Duration(seconds: 3)),
           backgroundColor: Colors.white,
           done: Done(
             const RootScreen(),

@@ -95,8 +95,10 @@ class ProfileView extends StatelessWidget {
                       subtitle: "تسجيل الخروج ",
                       fct: () async {
                         await FirebaseAuth.instance.signOut();
-                        Navigator.pushReplacementNamed(
-                            context, LogInView.routName);
+                        if (context.mounted) {
+                          Navigator.pushReplacementNamed(
+                              context, LogInView.routName);
+                        }
                       },
                       isError: false);
                 },
