@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'app_color.dart';
-
 class Styles {
-
-  
   static ThemeData themeData({
     required bool isDarkTheme,
     required BuildContext context,
   }) {
     return ThemeData(
-      scaffoldBackgroundColor:
-          isDarkTheme ? AppColors.darkScaffoldColor : Colors.grey[200],
-      cardColor: isDarkTheme
-          ? const Color.fromARGB(255, 13, 6, 37)
-          : AppColors.lightCardColor,
+      useMaterial3: false,
+      scaffoldBackgroundColor: Colors.grey[200],
+      cardColor: const Color.fromARGB(255, 13, 6, 37),
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(
           color: isDarkTheme ? Colors.white : Colors.black,
         ),
-        backgroundColor:
-            isDarkTheme ? AppColors.darkScaffoldColor : Colors.grey[200],
+        backgroundColor: Colors.grey[200],
         elevation: 0,
         centerTitle: false,
         titleTextStyle: TextStyle(

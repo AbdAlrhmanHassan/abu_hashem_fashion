@@ -75,11 +75,10 @@ class ProfileView extends StatelessWidget {
                 "assets/image/important_image/theme.png",
                 height: 30,
               ),
+              // ignore: dead_code
               title: const Text(true ? "Dark mode" : "Light mode"),
-              value: true,
-              onChanged: (value) {
-                ThemeData.dark();
-              },
+              value: false,
+              onChanged: (value) {},
             ),
             const Divider(
               height: 40,
@@ -95,6 +94,7 @@ class ProfileView extends StatelessWidget {
                       subtitle: "تسجيل الخروج ",
                       fct: () async {
                         await FirebaseAuth.instance.signOut();
+
                         if (context.mounted) {
                           Navigator.pushReplacementNamed(
                               context, LogInView.routName);

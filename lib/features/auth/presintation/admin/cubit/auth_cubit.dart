@@ -6,7 +6,6 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-
 part 'auth_state.dart';
 
 class AuthcubitCubit extends Cubit<AuthcubitState> {
@@ -42,8 +41,6 @@ class AuthcubitCubit extends Cubit<AuthcubitState> {
     } on FirebaseException catch (e) {
       emit(AuthcubitFailure(errMsg: e.message.toString()));
 
-      // Handle other types of FirebaseExceptions
-      print("FirebaseException occurred: ${e.message}");
     } catch (e) {
       emit(AuthcubitFailure(errMsg: e.toString()));
 

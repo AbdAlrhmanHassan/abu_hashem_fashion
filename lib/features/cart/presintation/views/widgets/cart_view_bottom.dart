@@ -5,7 +5,11 @@ import '../../../../../core/style/font.dart';
 class CartViewBottom extends StatelessWidget {
   const CartViewBottom({
     super.key,
+    required this.qty,
+    required this.price,
   });
+  final int qty;
+  final double price;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class CartViewBottom extends StatelessWidget {
                   style: Styles.textStyle16.copyWith(
                       color: Colors.black, fontWeight: FontWeight.bold)),
               TextSpan(
-                  text: " 6",
+                  text: "$qty",
                   style: Styles.textStyle14.copyWith(
                       color: Colors.blue[400], fontWeight: FontWeight.bold)),
             ])),
@@ -44,7 +48,7 @@ class CartViewBottom extends StatelessWidget {
                           color: Colors.blue[400],
                           fontWeight: FontWeight.bold)),
                   TextSpan(
-                      text: " 87",
+                      text: " $price",
                       style: Styles.textStyle18.copyWith(
                           color: Colors.blue[400],
                           fontWeight: FontWeight.bold)),

@@ -11,14 +11,8 @@ final class CartInitial extends CartState {}
 
 final class CartLoading extends CartState {}
 
+class CartSuccess extends CartState {}
 
-class CartSuccess extends CartState {
-  final List<CartModel> cartItems;
-
-  const CartSuccess(this.cartItems);
-
-  
-}
 final class CartFailure extends CartState {
   final String errorMsg;
 

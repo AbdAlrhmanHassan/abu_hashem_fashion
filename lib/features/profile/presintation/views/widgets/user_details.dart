@@ -34,12 +34,12 @@ class UserDetails extends StatelessWidget {
           children: [
             const SizedBox(height: 14),
             Text(
-              user != null ? user.displayName ?? " " : " ",
+                  user.displayName??'' ,
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             const SizedBox(height: 7),
             Text(
-              user != null ? user.email ?? " " : " ",
+                  user.email ??  " ",
               style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
             ),
           ],

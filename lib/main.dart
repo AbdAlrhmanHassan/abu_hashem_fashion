@@ -2,7 +2,6 @@ import 'package:abu_hashem_fashion/core/style/styles.dart';
 import 'package:abu_hashem_fashion/core/widgets/bottom_navigation_bar.dart';
 import 'package:abu_hashem_fashion/core/widgets/custom_app_bar.dart';
 import 'package:abu_hashem_fashion/features/auth/presintation/views/login_view.dart';
-import 'package:abu_hashem_fashion/features/cart/presintation/admin/cubit/cart_cubit.dart';
 import 'package:abu_hashem_fashion/features/home/presintation/admin/cubit/view_all_products_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +25,7 @@ void main() async {
             MultiBlocProvider(
               providers: [
                 BlocProvider(create: (context) => AuthcubitCubit()),
-                BlocProvider(create: (context) => ViewAllProductsCubit()),
-                BlocProvider(create: (context) => CartCubit()),
+                BlocProvider(create: (context) => ProductsCubit()),
               ],
               child: const AbuHashemFashionApp(),
             ),
@@ -40,6 +38,7 @@ class AbuHashemFashionApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // localizationsDelegates: const [
       //   GlobalCupertinoLocalizations.delegate,
       //   GlobalMaterialLocalizations.delegate,

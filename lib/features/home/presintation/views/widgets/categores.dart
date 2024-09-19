@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/consts_photo.dart';
@@ -17,8 +16,7 @@ class Categories extends StatelessWidget {
       crossAxisCount: 2,
       childAspectRatio: 1.2,
       padding: const EdgeInsets.all(10),
-      children:
-          List.generate(categoresItemsImagePath.length, (index) {
+      children: List.generate(categoresItemsImagePath.length, (index) {
         return ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Card(
@@ -43,4 +41,3 @@ class Categories extends StatelessWidget {
     );
   }
 }
-

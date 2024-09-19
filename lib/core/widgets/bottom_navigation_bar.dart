@@ -1,8 +1,10 @@
-import 'package:abu_hashem_fashion/features/cart/presintation/views/cart_view.dart';
-import 'package:abu_hashem_fashion/features/home/presintation/views/home_view.dart';
+ import 'package:abu_hashem_fashion/features/home/presintation/views/home_view.dart';
 import 'package:abu_hashem_fashion/features/profile/presintation/views/profile_view.dart';
 import 'package:abu_hashem_fashion/features/search/presintation/views/search_view.dart';
 import 'package:flutter/material.dart';
+ import 'package:flutter_iconly/flutter_iconly.dart';
+
+import '../../features/cart/presintation/views/cart_view.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -34,27 +36,38 @@ class _RootScreenState extends State<RootScreen> {
     return Scaffold(
       body: PageView(
         controller: controllerV,
-        // physics: const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: screenList,
       ),
       bottomNavigationBar: NavigationBar(
-          selectedIndex: currentScreen,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          height: kBottomNavigationBarHeight + 10,
-          elevation: 15,
-          onDestinationSelected: (index) {
-            setState(() {
-              currentScreen = index;
-            });
-            controllerV!.jumpToPage(currentScreen);
-          },
-          destinations: const [
-            NavigationDestination(icon: Icon(Icons.home), label: "HomePage"),
-            NavigationDestination(icon: Icon(Icons.search), label: "Search"),
-            NavigationDestination(
-                icon: Icon(Icons.shopping_cart_rounded), label: "cart"),
-            NavigationDestination(icon: Icon(Icons.person), label: "profile"),
-          ]),
+        selectedIndex: currentScreen,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        height: kBottomNavigationBarHeight + 10,
+        elevation: 6,
+        onDestinationSelected: (index) {
+          setState(() {
+            currentScreen = index;
+          });
+          controllerV!.jumpToPage(currentScreen);
+        },
+        destinations: const [
+          NavigationDestination(
+              selectedIcon: Icon(IconlyBold.home),
+              icon: Icon(IconlyLight.home),
+              label: "HomePage"),
+          NavigationDestination(icon: Icon(Icons.search), label: "Search"),
+          NavigationDestination(
+              selectedIcon: Icon(Icons.shopping_cart_rounded),
+              icon: Icon(Icons.shopping_cart_rounded),
+              // Badge(
+              //     backgroundColor: Colors.blue[400],
+              //     label: Text(
+              //      ),
+              //     child: const Icon(Icons.shopping_cart_rounded)),
+              label: "cart"),
+          NavigationDestination(icon: Icon(Icons.person), label: "profile"),
+        ],
+      ),
     );
   }
 }
