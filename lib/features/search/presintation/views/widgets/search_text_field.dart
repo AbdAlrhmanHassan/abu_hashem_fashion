@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 TextField searchTextField({
   required BuildContext context,
   required TextEditingController searchTextController,
+  void Function()? clearFieldF,
   required void Function(String)? onChangedF,
 }) {
   return TextField(
@@ -16,16 +17,11 @@ TextField searchTextField({
       hintText: "إبدأ بالبحث الآن",
       // filled: true,
       suffixIcon: const Icon(
-        Icons.search,
+        Icons.search, 
         color: Colors.black,
       ),
       prefixIcon: GestureDetector(
-        onTap: () {
-          // setState(() {
-          searchTextController.clear();
-          FocusScope.of(context).unfocus();
-          // });
-        },
+        onTap: clearFieldF,
         child: Icon(
           Icons.clear,
           color: Colors.red[300]!,
@@ -33,7 +29,6 @@ TextField searchTextField({
       ),
     ),
     onChanged: onChangedF,
-    onSubmitted: (value) {},
   );
 }
 

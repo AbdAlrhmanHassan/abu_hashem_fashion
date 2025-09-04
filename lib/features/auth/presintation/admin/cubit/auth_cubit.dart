@@ -1,27 +1,28 @@
 import 'dart:developer';
 
+import 'package:abu_hashem_fashion/core/data/models/user_address_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 part 'auth_state.dart';
 
-class AuthcubitCubit extends Cubit<AuthcubitState> {
-  AuthcubitCubit() : super(AuthcubitInitial());
-
-  User? user1 = FirebaseAuth.instance.currentUser;
+class Authcubit extends Cubit<AuthcubitState> {
+  Authcubit() : super(AuthcubitInitial());
 
   Future<void> loginUserF(
       {required String lEmail, required String lPassword}) async {
     try {
+      User? user1 = FirebaseAuth.instance.currentUser;
+
       emit(AuthcubitLoading());
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: lEmail.trim(), password: lPassword.trim());
       if (user1 != null) {
-        log(user1!.email.toString());
-        log(user1!.email.toString());
+        log(user1.email.toString());
+        log(user1.email.toString());
       }
 
       emit(AuthcubitSuccess());
@@ -38,9 +39,7 @@ class AuthcubitCubit extends Cubit<AuthcubitState> {
 
         log(e.toString());
       }
-    } on FirebaseException catch (e) {
       emit(AuthcubitFailure(errMsg: e.message.toString()));
-
     } catch (e) {
       emit(AuthcubitFailure(errMsg: e.toString()));
 
@@ -50,6 +49,7 @@ class AuthcubitCubit extends Cubit<AuthcubitState> {
 
   Future<void> signUpUserF({
     required String lEmail,
+    required String phone,
     required String lPassword,
     required String name,
   }) async {
@@ -65,15 +65,12 @@ class AuthcubitCubit extends Cubit<AuthcubitState> {
       log(user.uid);
       await FirebaseFirestore.instance.collection("users").doc(uId).set({
         "userId": uId,
-        "userName": name,
         "userEmail": lEmail,
+        "userName": name,
+        "userPhone": phone,
         "createAt": Timestamp.now(),
         "userCart": []
       });
-      if (user1 != null) {
-        log(user1!.email.toString());
-        log(user1!.email.toString());
-      }
 
       emit(AuthcubitSuccess());
     } on FirebaseAuthException catch (e) {
@@ -90,11 +87,140 @@ class AuthcubitCubit extends Cubit<AuthcubitState> {
       emit(AuthcubitFailure(errMsg: e.code.toString()));
 
       // Handle other types of FirebaseExceptions
-      print("FirebaseException occurred: $e");
     } catch (e) {
       emit(AuthcubitFailure(errMsg: e.toString()));
 
       log(e.toString());
+    }
+  }
+
+  Future<void> saveUserAddress(
+      {required UserAddressModel userAddressModel}) async {
+    try {
+      User? user1 = FirebaseAuth.instance.currentUser;
+
+      emit(AuthcubitLoading());
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(user1!.uid)
+          .collection("userAddress")
+          .doc(user1.uid)
+          .set(userAddressModel.toMap());
+      emit(AuthcubitSuccess());
+    } catch (e) {
+      emit(AuthcubitFailure(errMsg: e.toString()));
+      log(e.toString());
+    }
+  }
+
+  Future<UserAddressModel?> getUserAddress() async {
+    try {
+      emit(AuthcubitLoading());
+
+      User? user1 = FirebaseAuth.instance.currentUser;
+
+      DocumentSnapshot<Map<String, dynamic>> userAddressDoc =
+          await FirebaseFirestore.instance
+              .collection("users")
+              .doc(user1!.uid)
+              .collection("userAddress")
+              .doc(user1.uid)
+              .get();
+
+      if (userAddressDoc.data() == null) {
+        // ignore: prefer_const_constructors
+        emit(AuthcubitFailure(errMsg: "No address found"));
+        return null;
+      }
+      UserAddressModel? userAddressModel =
+          UserAddressModel.fromJson(userAddressDoc);
+
+      emit(AuthcubitSuccess());
+      return userAddressModel;
+    } catch (e) {
+      emit(AuthcubitFailure(errMsg: e.toString()));
+      rethrow;
+    }
+  }
+
+  Future<User?> signInWithGoogle() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    // Sign out from GoogleSignIn to ensure the account selection prompt appears
+
+    await googleSignIn.signOut();
+
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+    if (googleUser != null) {
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Check if the user is new
+      bool isNewUser = userCredential.additionalUserInfo?.isNewUser ?? false;
+
+      // Get the phone number if available
+      String? phoneNumber = userCredential.user?.phoneNumber;
+
+      if (isNewUser) {
+        // Save the user data in Firestore if it's a new user
+        await FirebaseFirestore.instance
+            .collection("users")
+            .doc(userCredential.user!.uid)
+            .set({
+          "userId": userCredential.user!.uid,
+          "userEmail": userCredential.user!.email,
+          "userName": userCredential.user!.displayName,
+          "userPhone": phoneNumber, // Add phone number if available
+          "createAt": Timestamp.now(),
+          "userCart": []
+        });
+      } else {
+        // Handle existing user logic if needed
+      }
+
+      return userCredential.user; // Return the signed-in user
+    } else {
+      return null; // Sign-in failed or canceled
+    }
+  }
+
+  Future<bool> phoneNumberExists() async {
+    final User? user = FirebaseAuth.instance.currentUser;
+
+    if (user == null) {
+      return false; // User is not signed in
+    }
+
+    DocumentSnapshot userDoc = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user.uid)
+        .get();
+
+    if (userDoc.exists && userDoc.data() != null) {
+      // Check if 'userPhone' field exists and is not null
+      Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+      return userData.containsKey("userPhone") && userData["userPhone"] != null;
+    }
+
+    return false; // Document doesn't exist or 'userPhone' field is missing
+  }
+
+  Future<void> updatePhoneNumber(String phoneNumber) async {
+    final User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(user.uid)
+          .update({"userPhone": phoneNumber});
     }
   }
 
@@ -194,21 +320,20 @@ class AuthcubitCubit extends Cubit<AuthcubitState> {
   //   });
   // }
 
-  Future<User?> facebookSignIn() async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
+  // Future<User?> facebookSignIn() async {
+  //   final FirebaseAuth auth = FirebaseAuth.instance;
 
-    try {
-      final LoginResult accessToken = await FacebookAuth.instance.login();
-      final OAuthCredential credential =
-          FacebookAuthProvider.credential(accessToken.toString());
-      final UserCredential authResult =
-          await auth.signInWithCredential(credential);
-      final User? user = authResult.user;
-      return user;
-    } catch (error) {
-      print(error);
-      // Handle error
-    }
-    return null;
-  }
+  //   try {
+  //     final LoginResult accessToken = await FacebookAuth.instance.login();
+  //     final OAuthCredential credential =
+  //         FacebookAuthProvider.credential(accessToken.toString());
+  //     final UserCredential authResult =
+  //         await auth.signInWithCredential(credential);
+  //     final User? user = authResult.user;
+  //     return user;
+  //   } catch (error) {
+  //     // Handle error
+  //   }
+  //   return null;
+  // }
 }

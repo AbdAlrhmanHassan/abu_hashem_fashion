@@ -35,7 +35,7 @@ class CartViewBody extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ListView.builder(
                       itemCount: cartCubit.getCartList.length,
                       itemBuilder: (context, index) {
@@ -63,7 +63,7 @@ class CartViewBody extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: CartViewBottom(
                     qty: cartCubit.getAllCartItemsQuantity(),
-                    price: cartCubit.getAllCartItemsPrice() ?? 0,
+                    price: cartCubit.getAllCartItemsPrice() ,
                   ),
                 ),
               ],

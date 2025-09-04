@@ -7,6 +7,7 @@ import 'package:abu_hashem_fashion/features/cart/presintation/admin/cubit/cart_c
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:input_quantity/input_quantity.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../../../core/style/font.dart';
 
@@ -26,129 +27,190 @@ class CartItem extends StatefulWidget {
 }
 
 class _CartItemState extends State<CartItem> {
+  late int quantityInDB;
+
   @override
   void initState() {
-    log("Quantity ${widget.quantity}");
-
-    if (widget.quantity > int.parse(widget.productModel.productQuantity)) {
-      BlocProvider.of<CartCubit>(context).quantityChange(
-          cartId: widget.cartModel.cartId,
-          qty: int.parse(widget.productModel.productQuantity),
-          productId: widget.productModel.productId);
-    }
+    getProductQuantity();
+    // if (widget.quantity > int.parse(widget.productModel.productQuantity)) {
+    //   BlocProvider.of<CartCubit>(context).quantityChange(
+    //       cartId: widget.cartModel.cartId,
+    //       qty: int.parse(widget.productModel.productQuantity),
+    //       productId: widget.productModel.productId);
+    // }
     super.initState();
+  }
+
+  void getProductQuantity() {
+    quantityInDB = widget.productModel.sizeAndColorQtyMap[widget.cartModel
+        .sizeAndColorMap['size']]![widget.cartModel.sizeAndColorMap['color']]!;
+    // quantityInDB= widget.cartModel.sizeAndColorMap[widget.productModel. productId]?[widget.cartModel.sizeAndColorMap];
   }
 
   @override
   Widget build(BuildContext context) {
-    log("Quantity ${widget.quantity}");
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(24),
-      child: Card(
-        color: Colors.grey[100],
-        child: SizedBox(
-          height: getScreenHight(context) * .2,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            textDirection: TextDirection.rtl,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            widget.productModel.productTitle,
-                            overflow: TextOverflow.ellipsis,
-                            textDirection: TextDirection.rtl,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
+    log('quantityInDB: $quantityInDB');
+    return Card(
+      shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.grey[350]!),
+          borderRadius: BorderRadius.circular(12)),
+      color: Colors.grey[50],
+      child: SizedBox(
+        height: getScreenHeight(context) * .22,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.productModel.productTitle,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        quantityInDB <= 8
+                            ? Text(
+                                'الكمية المتبقية : $quantityInDB ',
+                                style: Styles.textStyle14
+                                    .copyWith(color: Colors.red),
+                              )
+                            : Container(),
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                const Text(
+                                  'المقاس : ',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  widget.cartModel.sizeAndColorMap['size'],
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const Text(
+                                  'اللون : ',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                CircleAvatar(
+                                    radius: 15,
+                                    backgroundColor: widget.cartModel
+                                        .sizeAndColorMap['color'] as Color?),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RichText(
+                            text: TextSpan(
+                          children: [
+                            TextSpan(
+                                text: "JOD ",
+                                style: Styles.textStyle14.copyWith(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10)),
+                            TextSpan(
+                                text:
+                                    '${double.parse(widget.productModel.productPrice) * widget.quantity}',
+                                style: Styles.textStyle16.copyWith(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ))
+                          ],
+                        )),
+                        Theme(
+                          data: Theme.of(context).copyWith(
+                            inputDecorationTheme: const InputDecorationTheme(
+                              border: InputBorder.none, // Removes border
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                            ),
                           ),
-                          int.parse(widget.productModel.productQuantity) <= 8
-                              ? Text(
-                                  'الكمية المتبقية : ${widget.productModel.productQuantity} ',
-                                  style: Styles.textStyle14
-                                      .copyWith(color: Colors.red),
-                                )
-                              : Container()
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InputQty.int(
+                          child: InputQty.int(
                             onQtyChanged: (value) {
                               BlocProvider.of<CartCubit>(context)
                                   .quantityChange(
-                                      cartId: widget.cartModel.cartId,
-                                      qty: value,
-                                      productId: widget.productModel.productId);
+                                cartId: widget.cartModel.cartId,
+                                qty: value,
+                                productId: widget.productModel.productId,
+                              );
                             },
-                            initVal: int.parse(
-                                        widget.productModel.productQuantity) >=
-                                    widget.quantity
+                            initVal: quantityInDB >= widget.quantity
                                 ? widget.quantity
-                                : int.parse(
-                                    widget.productModel.productQuantity),
+                                : quantityInDB,
                             minVal: 1,
-                            maxVal: num.parse(
-                                        widget.productModel.productQuantity) >=
-                                    12
-                                ? 12
-                                : num.parse(
-                                    widget.productModel.productQuantity),
+                            maxVal: quantityInDB >= 12 ? 12 : quantityInDB,
                             qtyFormProps: const QtyFormProps(
-                              enableTyping: true,
+                              enableTyping: false,
+                              showCursor: false,
                             ),
                             decoration: QtyDecorationProps(
-                                border: InputBorder.none,
-                                isBordered: false,
-                                borderShape: BorderShapeBtn.circle,
-                                btnColor: Colors.blue[300]!),
+                              borderShape: BorderShapeBtn.circle,
+                              btnColor: Colors.blue[300]!,
+                            ),
                           ),
-                          RichText(
-                              text: TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: "JOD ",
-                                  style: Styles.textStyle14.copyWith(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10)),
-                              TextSpan(
-                                  text:
-                                      '${double.parse(widget.productModel.productPrice) * widget.quantity}',
-                                  style: Styles.textStyle16.copyWith(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ))
-                            ],
-                          )),
-                        ],
-                      )
-                    ],
-                  ),
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
-              Stack(children: [
-                Container(
-                  color: Colors.white,
-                  padding: const EdgeInsets.all(8),
-                  child: Image.network(
-                    widget.productModel.productImageUrl,
-                    width: (getScreenWidth(context) / 3) - 10,
-                    height: getScreenHight(context) * .2,
-                  ),
+            ),
+            Stack(children: [
+              Container(
+                color: Colors.white,
+                width: (getScreenWidth(context) / 3) - 10,
+                height: getScreenHeight(context) * .22,
+                child: Image.network(
+                  widget.productModel.productImageUrl,
+                  fit: BoxFit.contain,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child; // Once the image is loaded, display it
+                    } else {
+                      // Show a shimmer effect while the image is loading
+                      return Shimmer.fromColors(
+                        baseColor: Colors.grey,
+                        highlightColor: Colors.grey[400]!,
+                        child: Container(
+                          width: (getScreenWidth(context) / 2) - 10,
+                          height: getScreenHeight(context) / 3.2,
+                          color:
+                              Colors.red[300], // Placeholder color for shimmer
+                        ),
+                      );
+                    }
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(
+                      Icons.error,
+                      color: Colors.red,
+                    );
+                  },
                 ),
-                IconButton(
+              ),
+              Positioned(
+                left: 0,
+                top: 0,
+                child: IconButton(
                     onPressed: () async {
-                      BlocProvider.of<CartCubit>(context).deleteCartItem(
-                        cartId: widget.cartModel.cartId,
+                      BlocProvider.of<CartCubit>(context)
+                          .deleteCartItemByProductId(
                         productId: widget.productModel.productId,
                       );
                     },
@@ -156,9 +218,9 @@ class _CartItemState extends State<CartItem> {
                       Icons.delete,
                       color: Colors.red,
                     )),
-              ]),
-            ],
-          ),
+              ),
+            ]),
+          ],
         ),
       ),
     );

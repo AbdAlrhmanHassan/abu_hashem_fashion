@@ -24,9 +24,7 @@ final class ViewAllProductsFailure extends ProductsState {
   const ViewAllProductsFailure({required this.errorMsg});
 }
 
-final class CartAddSuccess extends ProductsState {}
 
-final class CartLoading extends ProductsState {}
 
 final class CartFailure extends ProductsState {
   final String errorMsg;

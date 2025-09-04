@@ -1,3 +1,4 @@
+import 'package:abu_hashem_fashion/features/checkout/presentation/views/address_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/style/font.dart';
@@ -63,7 +64,10 @@ class CartViewBottom extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              // BlocProvider.of<CartCubit>(context).addOrder();
+              Navigator.pushNamed(context, AddressView.routeName);
+            },
             child: const Text(
               "تأكيد الطلب",
               style: TextStyle(

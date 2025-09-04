@@ -1,10 +1,7 @@
-import 'dart:developer';
-
+ 
 import 'package:abu_hashem_fashion/core/widgets/custom_app_bar.dart';
-import 'package:abu_hashem_fashion/features/auth/presintation/admin/cubit/auth_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
+ import 'package:flutter/material.dart';
+ 
 import 'widgets/flutter_log_in_widget.dart';
 
 class LogInView extends StatelessWidget {
@@ -13,30 +10,18 @@ class LogInView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isLoading = false;
-    String? errorMsg;
-    return BlocBuilder<AuthcubitCubit, AuthcubitState>(
-      builder: (context, state) {
-        if (state is AuthcubitLoading) {
-          isLoading = true;
-        } else {
-          isLoading = false;
-        }
-
-        if (state is AuthcubitFailure) {
-          errorMsg = state.errMsg;
-        } else {
-          errorMsg = null;
-        }
-        log("error msg :$errorMsg");
+     
+    
+    
         return Scaffold(
+            backgroundColor: Colors.grey[50],
             appBar: AppBar(
+              backgroundColor: Colors.grey[50],
               elevation: 0,
               title: customAppName(),
               centerTitle: true,
             ),
-            body: LoginPage(isLoading: isLoading, errorMsg: errorMsg));
-      },
-    );
+            body: const LoginPage(),);
+ 
   }
 }

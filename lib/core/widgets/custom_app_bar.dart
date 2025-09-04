@@ -7,6 +7,7 @@ Widget customAppName({Duration? duration}) {
     baseColor: Colors.black,
     highlightColor: Colors.blue[200]!,
     child: const Text(
+      // "أبو هاشم للأزياء",
       "Abu Hashem Fashion",
       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
     ),

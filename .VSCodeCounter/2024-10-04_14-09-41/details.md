@@ -1,0 +1,153 @@
+# Details
+
+Date : 2024-10-04 14:09:41
+
+Directory c:\\Users\\USER\\VS_CodeProjects_Flutter\\flutter My application\\abu_hashem_fashion
+
+Total : 138 files,  6025 codes, 1179 comments, 852 blanks, all 8056 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [README.md](/README.md) | Markdown | 10 | 0 | 7 | 17 |
+| [analysis_options.yaml](/analysis_options.yaml) | YAML | 3 | 23 | 4 | 30 |
+| [android/app/build.gradle](/android/app/build.gradle) | Gradle | 51 | 5 | 12 | 68 |
+| [android/app/google-services.json](/android/app/google-services.json) | JSON | 48 | 0 | 0 | 48 |
+| [android/app/src/debug/AndroidManifest.xml](/android/app/src/debug/AndroidManifest.xml) | XML | 3 | 4 | 1 | 8 |
+| [android/app/src/main/AndroidManifest.xml](/android/app/src/main/AndroidManifest.xml) | XML | 27 | 6 | 1 | 34 |
+| [android/app/src/main/res/drawable-v21/launch_background.xml](/android/app/src/main/res/drawable-v21/launch_background.xml) | XML | 4 | 7 | 2 | 13 |
+| [android/app/src/main/res/drawable/launch_background.xml](/android/app/src/main/res/drawable/launch_background.xml) | XML | 4 | 7 | 2 | 13 |
+| [android/app/src/main/res/values-night/styles.xml](/android/app/src/main/res/values-night/styles.xml) | XML | 9 | 9 | 1 | 19 |
+| [android/app/src/main/res/values/styles.xml](/android/app/src/main/res/values/styles.xml) | XML | 9 | 9 | 1 | 19 |
+| [android/app/src/profile/AndroidManifest.xml](/android/app/src/profile/AndroidManifest.xml) | XML | 3 | 4 | 1 | 8 |
+| [android/build.gradle](/android/build.gradle) | Gradle | 27 | 0 | 5 | 32 |
+| [android/gradle.properties](/android/gradle.properties) | Java Properties | 3 | 0 | 1 | 4 |
+| [android/gradle/wrapper/gradle-wrapper.properties](/android/gradle/wrapper/gradle-wrapper.properties) | Java Properties | 5 | 0 | 1 | 6 |
+| [android/settings.gradle](/android/settings.gradle) | Gradle | 16 | 0 | 5 | 21 |
+| [assets/image/Edit_icon.svg](/assets/image/Edit_icon.svg) | XML | 10 | 0 | 1 | 11 |
+| [assets/image/box.svg](/assets/image/box.svg) | XML | 7 | 0 | 1 | 8 |
+| [assets/image/box_icon.svg](/assets/image/box_icon.svg) | XML | 5 | 0 | 1 | 6 |
+| [assets/image/google.svg](/assets/image/google.svg) | XML | 13 | 0 | 1 | 14 |
+| [assets/image/success_alert.svg](/assets/image/success_alert.svg) | XML | 10 | 0 | 1 | 11 |
+| [assets/image/tracking_order_box.svg](/assets/image/tracking_order_box.svg) | XML | 3 | 0 | 1 | 4 |
+| [assets/image/tracking_order_box_close.svg](/assets/image/tracking_order_box_close.svg) | XML | 6 | 0 | 1 | 7 |
+| [assets/image/tracking_order_checked.svg](/assets/image/tracking_order_checked.svg) | XML | 11 | 0 | 1 | 12 |
+| [assets/image/tracking_order_delivery.svg](/assets/image/tracking_order_delivery.svg) | XML | 10 | 0 | 1 | 11 |
+| [assets/image/tracking_order_delivery_done.svg](/assets/image/tracking_order_delivery_done.svg) | XML | 3 | 0 | 1 | 4 |
+| [assets/image/tracking_order_map.svg](/assets/image/tracking_order_map.svg) | XML | 18 | 0 | 1 | 19 |
+| [devtools_options.yaml](/devtools_options.yaml) | YAML | 1 | 0 | 1 | 2 |
+| [ios/RunnerTests/RunnerTests.swift](/ios/RunnerTests/RunnerTests.swift) | Swift | 7 | 2 | 4 | 13 |
+| [ios/Runner/AppDelegate.swift](/ios/Runner/AppDelegate.swift) | Swift | 12 | 0 | 2 | 14 |
+| [ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json](/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json) | JSON | 122 | 0 | 1 | 123 |
+| [ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json](/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json) | JSON | 23 | 0 | 1 | 24 |
+| [ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md](/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md) | Markdown | 3 | 0 | 2 | 5 |
+| [ios/Runner/Base.lproj/LaunchScreen.storyboard](/ios/Runner/Base.lproj/LaunchScreen.storyboard) | XML | 36 | 1 | 1 | 38 |
+| [ios/Runner/Base.lproj/Main.storyboard](/ios/Runner/Base.lproj/Main.storyboard) | XML | 25 | 1 | 1 | 27 |
+| [ios/Runner/Runner-Bridging-Header.h](/ios/Runner/Runner-Bridging-Header.h) | C++ | 1 | 0 | 1 | 2 |
+| [ios/firebase_app_id_file.json](/ios/firebase_app_id_file.json) | JSON | 7 | 0 | 0 | 7 |
+| [lib/core/constants/consts_photo.dart](/lib/core/constants/consts_photo.dart) | Dart | 23 | 0 | 4 | 27 |
+| [lib/core/constants/screen_size.dart](/lib/core/constants/screen_size.dart) | Dart | 7 | 0 | 3 | 10 |
+| [lib/core/data/models/product_model.dart](/lib/core/data/models/product_model.dart) | Dart | 76 | 5 | 10 | 91 |
+| [lib/core/data/models/user_address_model.dart](/lib/core/data/models/user_address_model.dart) | Dart | 29 | 0 | 5 | 34 |
+| [lib/core/helper_function/validators.dart](/lib/core/helper_function/validators.dart) | Dart | 36 | 1 | 5 | 42 |
+| [lib/core/style/app_color.dart](/lib/core/style/app_color.dart) | Dart | 0 | 8 | 2 | 10 |
+| [lib/core/style/font.dart](/lib/core/style/font.dart) | Dart | 13 | 7 | 8 | 28 |
+| [lib/core/style/styles.dart](/lib/core/style/styles.dart) | Dart | 63 | 67 | 1 | 131 |
+| [lib/core/utils/app_images.dart](/lib/core/utils/app_images.dart) | Dart | 27 | 49 | 26 | 102 |
+| [lib/core/widgets/bottom_navigation_bar.dart](/lib/core/widgets/bottom_navigation_bar.dart) | Dart | 95 | 4 | 7 | 106 |
+| [lib/core/widgets/custom_app_bar.dart](/lib/core/widgets/custom_app_bar.dart) | Dart | 13 | 1 | 2 | 16 |
+| [lib/core/widgets/custom_elevated_button.dart](/lib/core/widgets/custom_elevated_button.dart) | Dart | 30 | 1 | 2 | 33 |
+| [lib/core/widgets/custom_text_field.dart](/lib/core/widgets/custom_text_field.dart) | Dart | 42 | 0 | 3 | 45 |
+| [lib/core/widgets/item_cart.dart](/lib/core/widgets/item_cart.dart) | Dart | 287 | 10 | 14 | 311 |
+| [lib/core/widgets/show_error_or_warning_dialog.dart](/lib/core/widgets/show_error_or_warning_dialog.dart) | Dart | 62 | 3 | 2 | 67 |
+| [lib/core/widgets/tell_user_to_signin_dialog.dart](/lib/core/widgets/tell_user_to_signin_dialog.dart) | Dart | 40 | 0 | 3 | 43 |
+| [lib/delete.dart](/lib/delete.dart) | Dart | 0 | 67 | 0 | 67 |
+| [lib/features/auth/data/user_info_model.dart](/lib/features/auth/data/user_info_model.dart) | Dart | 38 | 0 | 9 | 47 |
+| [lib/features/auth/presintation/admin/cubit/auth_cubit.dart](/lib/features/auth/presintation/admin/cubit/auth_cubit.dart) | Dart | 178 | 111 | 53 | 342 |
+| [lib/features/auth/presintation/admin/cubit/auth_state.dart](/lib/features/auth/presintation/admin/cubit/auth_state.dart) | Dart | 13 | 0 | 9 | 22 |
+| [lib/features/auth/presintation/views/login_view.dart](/lib/features/auth/presintation/views/login_view.dart) | Dart | 19 | 0 | 9 | 28 |
+| [lib/features/auth/presintation/views/widgets/add_phone_number.dart](/lib/features/auth/presintation/views/widgets/add_phone_number.dart) | Dart | 56 | 0 | 5 | 61 |
+| [lib/features/auth/presintation/views/widgets/custom_auth_button.dart](/lib/features/auth/presintation/views/widgets/custom_auth_button.dart) | Dart | 35 | 0 | 2 | 37 |
+| [lib/features/auth/presintation/views/widgets/flutter_log_in_widget.dart](/lib/features/auth/presintation/views/widgets/flutter_log_in_widget.dart) | Dart | 264 | 46 | 21 | 331 |
+| [lib/features/auth/presintation/views/widgets/pick_image_widget.dart](/lib/features/auth/presintation/views/widgets/pick_image_widget.dart) | Dart | 57 | 0 | 3 | 60 |
+| [lib/features/cart/data/cart_model.dart](/lib/features/cart/data/cart_model.dart) | Dart | 37 | 2 | 5 | 44 |
+| [lib/features/cart/data/order_model.dart](/lib/features/cart/data/order_model.dart) | Dart | 42 | 0 | 5 | 47 |
+| [lib/features/cart/presintation/admin/cubit/cart_cubit.dart](/lib/features/cart/presintation/admin/cubit/cart_cubit.dart) | Dart | 278 | 27 | 64 | 369 |
+| [lib/features/cart/presintation/admin/cubit/cart_state.dart](/lib/features/cart/presintation/admin/cubit/cart_state.dart) | Dart | 13 | 0 | 8 | 21 |
+| [lib/features/cart/presintation/views/cart_view.dart](/lib/features/cart/presintation/views/cart_view.dart) | Dart | 22 | 0 | 4 | 26 |
+| [lib/features/cart/presintation/views/order_review.dart](/lib/features/cart/presintation/views/order_review.dart) | Dart | 0 | 0 | 1 | 1 |
+| [lib/features/cart/presintation/views/widgets/cart_item_cart_view.dart](/lib/features/cart/presintation/views/widgets/cart_item_cart_view.dart) | Dart | 214 | 7 | 7 | 228 |
+| [lib/features/cart/presintation/views/widgets/cart_view_body.dart](/lib/features/cart/presintation/views/widgets/cart_view_body.dart) | Dart | 68 | 1 | 8 | 77 |
+| [lib/features/cart/presintation/views/widgets/cart_view_bottom.dart](/lib/features/cart/presintation/views/widgets/cart_view_bottom.dart) | Dart | 80 | 1 | 4 | 85 |
+| [lib/features/checkout/presentation/views/address_view.dart](/lib/features/checkout/presentation/views/address_view.dart) | Dart | 16 | 0 | 3 | 19 |
+| [lib/features/checkout/presentation/views/checkout_done_view.dart](/lib/features/checkout/presentation/views/checkout_done_view.dart) | Dart | 69 | 0 | 3 | 72 |
+| [lib/features/checkout/presentation/views/order_tracking_view.dart](/lib/features/checkout/presentation/views/order_tracking_view.dart) | Dart | 14 | 4 | 3 | 21 |
+| [lib/features/checkout/presentation/views/payment_view.dart](/lib/features/checkout/presentation/views/payment_view.dart) | Dart | 0 | 15 | 3 | 18 |
+| [lib/features/checkout/presentation/views/review_order_view.dart](/lib/features/checkout/presentation/views/review_order_view.dart) | Dart | 21 | 1 | 3 | 25 |
+| [lib/features/checkout/presentation/views/shipping_view.dart](/lib/features/checkout/presentation/views/shipping_view.dart) | Dart | 0 | 21 | 3 | 24 |
+| [lib/features/checkout/presentation/views/widgets/body/address_view_body.dart](/lib/features/checkout/presentation/views/widgets/body/address_view_body.dart) | Dart | 205 | 29 | 23 | 257 |
+| [lib/features/checkout/presentation/views/widgets/body/order_tracking_view_body.dart](/lib/features/checkout/presentation/views/widgets/body/order_tracking_view_body.dart) | Dart | 22 | 18 | 3 | 43 |
+| [lib/features/checkout/presentation/views/widgets/body/payment_view_body.dart](/lib/features/checkout/presentation/views/widgets/body/payment_view_body.dart) | Dart | 0 | 223 | 7 | 230 |
+| [lib/features/checkout/presentation/views/widgets/body/review_order_view_body.dart](/lib/features/checkout/presentation/views/widgets/body/review_order_view_body.dart) | Dart | 82 | 2 | 8 | 92 |
+| [lib/features/checkout/presentation/views/widgets/body/shipping_view_body.dart](/lib/features/checkout/presentation/views/widgets/body/shipping_view_body.dart) | Dart | 0 | 57 | 6 | 63 |
+| [lib/features/checkout/presentation/views/widgets/checkout_status_row.dart](/lib/features/checkout/presentation/views/widgets/checkout_status_row.dart) | Dart | 34 | 1 | 4 | 39 |
+| [lib/features/checkout/presentation/views/widgets/checkout_status_row_item.dart](/lib/features/checkout/presentation/views/widgets/checkout_status_row_item.dart) | Dart | 57 | 0 | 2 | 59 |
+| [lib/features/checkout/presentation/views/widgets/custom_divider.dart](/lib/features/checkout/presentation/views/widgets/custom_divider.dart) | Dart | 14 | 0 | 3 | 17 |
+| [lib/features/checkout/presentation/views/widgets/custom_order_state_row.dart](/lib/features/checkout/presentation/views/widgets/custom_order_state_row.dart) | Dart | 74 | 1 | 3 | 78 |
+| [lib/features/checkout/presentation/views/widgets/delivery_address_card.dart](/lib/features/checkout/presentation/views/widgets/delivery_address_card.dart) | Dart | 74 | 2 | 2 | 78 |
+| [lib/features/checkout/presentation/views/widgets/order_card.dart](/lib/features/checkout/presentation/views/widgets/order_card.dart) | Dart | 43 | 0 | 4 | 47 |
+| [lib/features/checkout/presentation/views/widgets/order_details.dart](/lib/features/checkout/presentation/views/widgets/order_details.dart) | Dart | 64 | 0 | 3 | 67 |
+| [lib/features/checkout/presentation/views/widgets/order_state_card.dart](/lib/features/checkout/presentation/views/widgets/order_state_card.dart) | Dart | 52 | 0 | 4 | 56 |
+| [lib/features/checkout/presentation/views/widgets/order_summary_card.dart](/lib/features/checkout/presentation/views/widgets/order_summary_card.dart) | Dart | 68 | 0 | 4 | 72 |
+| [lib/features/checkout/presentation/views/widgets/payment_method.dart](/lib/features/checkout/presentation/views/widgets/payment_method.dart) | Dart | 34 | 0 | 4 | 38 |
+| [lib/features/checkout/presentation/views/widgets/payment_method_card.dart](/lib/features/checkout/presentation/views/widgets/payment_method_card.dart) | Dart | 69 | 5 | 4 | 78 |
+| [lib/features/checkout/presentation/views/widgets/payment_method_list_tile.dart](/lib/features/checkout/presentation/views/widgets/payment_method_list_tile.dart) | Dart | 80 | 0 | 4 | 84 |
+| [lib/features/checkout/presentation/views/widgets/section_title.dart](/lib/features/checkout/presentation/views/widgets/section_title.dart) | Dart | 16 | 0 | 4 | 20 |
+| [lib/features/checkout/presentation/views/widgets/summary_row.dart](/lib/features/checkout/presentation/views/widgets/summary_row.dart) | Dart | 24 | 0 | 4 | 28 |
+| [lib/features/home/presintation/admin/cubit/view_all_products_cubit.dart](/lib/features/home/presintation/admin/cubit/view_all_products_cubit.dart) | Dart | 135 | 20 | 28 | 183 |
+| [lib/features/home/presintation/admin/cubit/view_all_products_state.dart](/lib/features/home/presintation/admin/cubit/view_all_products_state.dart) | Dart | 21 | 0 | 13 | 34 |
+| [lib/features/home/presintation/views/home_view.dart](/lib/features/home/presintation/views/home_view.dart) | Dart | 84 | 13 | 8 | 105 |
+| [lib/features/home/presintation/views/widgets/categores.dart](/lib/features/home/presintation/views/widgets/categores.dart) | Dart | 40 | 0 | 4 | 44 |
+| [lib/features/home/presintation/views/widgets/swiper.dart](/lib/features/home/presintation/views/widgets/swiper.dart) | Dart | 39 | 0 | 4 | 43 |
+| [lib/features/profile/presintation/views/profile_view.dart](/lib/features/profile/presintation/views/profile_view.dart) | Dart | 86 | 23 | 9 | 118 |
+| [lib/features/profile/presintation/views/widgets/list_tile.dart](/lib/features/profile/presintation/views/widgets/list_tile.dart) | Dart | 33 | 0 | 3 | 36 |
+| [lib/features/profile/presintation/views/widgets/log_in_out_button.dart](/lib/features/profile/presintation/views/widgets/log_in_out_button.dart) | Dart | 33 | 0 | 4 | 37 |
+| [lib/features/profile/presintation/views/widgets/user_details.dart](/lib/features/profile/presintation/views/widgets/user_details.dart) | Dart | 47 | 0 | 4 | 51 |
+| [lib/features/search/presintation/views/search_view.dart](/lib/features/search/presintation/views/search_view.dart) | Dart | 125 | 0 | 10 | 135 |
+| [lib/features/search/presintation/views/widgets/search_text_field.dart](/lib/features/search/presintation/views/widgets/search_text_field.dart) | Dart | 39 | 3 | 3 | 45 |
+| [lib/firebase_options.dart](/lib/firebase_options.dart) | Dart | 64 | 12 | 6 | 82 |
+| [lib/generated/intl/messages_all.dart](/lib/generated/intl/messages_all.dart) | Dart | 44 | 10 | 10 | 64 |
+| [lib/generated/intl/messages_en.dart](/lib/generated/intl/messages_en.dart) | Dart | 9 | 10 | 7 | 26 |
+| [lib/generated/l10n.dart](/lib/generated/l10n.dart) | Dart | 56 | 8 | 15 | 79 |
+| [lib/l10n/intl_en.arb](/lib/l10n/intl_en.arb) | JSON | 1 | 0 | 0 | 1 |
+| [lib/main.dart](/lib/main.dart) | Dart | 73 | 1 | 7 | 81 |
+| [linux/flutter/generated_plugin_registrant.cc](/linux/flutter/generated_plugin_registrant.cc) | C++ | 11 | 4 | 5 | 20 |
+| [linux/flutter/generated_plugin_registrant.h](/linux/flutter/generated_plugin_registrant.h) | C++ | 5 | 5 | 6 | 16 |
+| [linux/main.cc](/linux/main.cc) | C++ | 5 | 0 | 2 | 7 |
+| [linux/my_application.cc](/linux/my_application.cc) | C++ | 74 | 11 | 20 | 105 |
+| [linux/my_application.h](/linux/my_application.h) | C++ | 7 | 7 | 5 | 19 |
+| [macos/Flutter/GeneratedPluginRegistrant.swift](/macos/Flutter/GeneratedPluginRegistrant.swift) | Swift | 18 | 3 | 4 | 25 |
+| [macos/RunnerTests/RunnerTests.swift](/macos/RunnerTests/RunnerTests.swift) | Swift | 7 | 2 | 4 | 13 |
+| [macos/Runner/AppDelegate.swift](/macos/Runner/AppDelegate.swift) | Swift | 8 | 0 | 2 | 10 |
+| [macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json](/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json) | JSON | 68 | 0 | 1 | 69 |
+| [macos/Runner/Base.lproj/MainMenu.xib](/macos/Runner/Base.lproj/MainMenu.xib) | XML | 343 | 0 | 1 | 344 |
+| [macos/Runner/MainFlutterWindow.swift](/macos/Runner/MainFlutterWindow.swift) | Swift | 12 | 0 | 4 | 16 |
+| [macos/firebase_app_id_file.json](/macos/firebase_app_id_file.json) | JSON | 7 | 0 | 0 | 7 |
+| [pubspec.yaml](/pubspec.yaml) | YAML | 49 | 52 | 9 | 110 |
+| [test/widget_test.dart](/test/widget_test.dart) | Dart | 14 | 10 | 7 | 31 |
+| [web/index.html](/web/index.html) | HTML | 38 | 16 | 6 | 60 |
+| [web/manifest.json](/web/manifest.json) | JSON | 35 | 0 | 1 | 36 |
+| [windows/flutter/generated_plugin_registrant.cc](/windows/flutter/generated_plugin_registrant.cc) | C++ | 18 | 4 | 5 | 27 |
+| [windows/flutter/generated_plugin_registrant.h](/windows/flutter/generated_plugin_registrant.h) | C++ | 5 | 5 | 6 | 16 |
+| [windows/runner/flutter_window.cpp](/windows/runner/flutter_window.cpp) | C++ | 49 | 7 | 16 | 72 |
+| [windows/runner/flutter_window.h](/windows/runner/flutter_window.h) | C++ | 20 | 5 | 9 | 34 |
+| [windows/runner/main.cpp](/windows/runner/main.cpp) | C++ | 30 | 4 | 10 | 44 |
+| [windows/runner/resource.h](/windows/runner/resource.h) | C++ | 9 | 6 | 2 | 17 |
+| [windows/runner/utils.cpp](/windows/runner/utils.cpp) | C++ | 54 | 2 | 10 | 66 |
+| [windows/runner/utils.h](/windows/runner/utils.h) | C++ | 8 | 6 | 6 | 20 |
+| [windows/runner/win32_window.cpp](/windows/runner/win32_window.cpp) | C++ | 210 | 24 | 55 | 289 |
+| [windows/runner/win32_window.h](/windows/runner/win32_window.h) | C++ | 48 | 31 | 24 | 103 |
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

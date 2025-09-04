@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-double getScreenHight(BuildContext context) {
+double getScreenHeight(BuildContext context) {
   return MediaQuery.of(context).size.height;
 }
 

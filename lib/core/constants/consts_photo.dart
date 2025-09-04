@@ -12,15 +12,15 @@ abstract class ConstsCategoresItem {
 }
 
 List<String> categoresItemsImagePath = [
-  ConstsCategoresItem.boy,
   ConstsCategoresItem.man,
-  ConstsCategoresItem.girl,
   ConstsCategoresItem.woman,
+  ConstsCategoresItem.boy,
+  ConstsCategoresItem.girl,
 ];
 
 List<String> categoresNames = [
-  "ولادي",
   "رجالي",
-  "بناتي",
   "ستاتي",
+  "ولادي",
+  "بناتي",
 ];

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Styles {
   static ThemeData themeData({
@@ -6,52 +7,58 @@ class Styles {
     required BuildContext context,
   }) {
     return ThemeData(
+      textTheme: GoogleFonts.cairoTextTheme(),
+      fontFamily: GoogleFonts.cairo().fontFamily,
       useMaterial3: false,
-      scaffoldBackgroundColor: Colors.grey[200],
-      cardColor: const Color.fromARGB(255, 13, 6, 37),
+      scaffoldBackgroundColor: Colors.white,
+      // cardColor: const Color.fromARGB(255, 13, 6, 37),
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(
           color: isDarkTheme ? Colors.white : Colors.black,
         ),
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.white,
         elevation: 0,
-        centerTitle: false,
+        centerTitle: true,
         titleTextStyle: TextStyle(
           color: isDarkTheme ? Colors.white : Colors.black,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
+        fillColor: Colors.white,
         filled: true,
-        contentPadding: const EdgeInsets.all(10),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 10, vertical: 18),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: Colors.grey[350]!,
+              width: 1,
+            )),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            width: 1,
-            color: Colors.transparent,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: Colors.grey[350]!,
+              width: 1,
+            )),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 1,
-            color: isDarkTheme ? Colors.white : Colors.black,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: Colors.grey[350]!,
+              width: 1,
+            )),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 1,
-            color: Theme.of(context).colorScheme.error,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.error,
+              width: 1,
+            )),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 1,
-            color: Theme.of(context).colorScheme.error,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.error,
+              width: 1,
+            )),
       ),
     );
   }

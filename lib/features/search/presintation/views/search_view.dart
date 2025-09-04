@@ -1,15 +1,18 @@
-import 'package:abu_hashem_fashion/core/constants/screen_size.dart';
+import 'dart:developer';
+
 import 'package:abu_hashem_fashion/core/data/models/product_model.dart';
 import 'package:abu_hashem_fashion/features/home/presintation/admin/cubit/view_all_products_cubit.dart';
 import 'package:abu_hashem_fashion/features/search/presintation/views/widgets/search_text_field.dart';
+import 'package:abu_hashem_fashion/features/search/presintation/views/widgets/searchitem_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/custom_app_bar.dart';
 
 class SearchView extends StatefulWidget {
-  const SearchView({super.key});
-
+  const SearchView({super.key, this.categories});
+  static const String routeName = 'SearchView';
+  final String? categories;
   @override
   State<SearchView> createState() => _SearchViewState();
 }
@@ -21,7 +24,24 @@ class _SearchViewState extends State<SearchView> {
   @override
   void initState() {
     searchTextController = TextEditingController();
+    if (widget.categories != null && widget.categories!.isNotEmpty) {
+      searchForCategory(widget.categories!);
+      searchTextController.text = widget.categories!;
+    }
     super.initState();
+  }
+
+  x() {
+    // Automatically search based on the categores if it's not null
+  }
+
+  Future<void> searchForCategory(String category) async {
+    log('Searching for category: $category');
+
+    productsList = await BlocProvider.of<ProductsCubit>(context)
+            .searchForProduct(categores: category.trim()) ??
+        [];
+    setState(() {});
   }
 
   @override
@@ -43,14 +63,29 @@ class _SearchViewState extends State<SearchView> {
               context: context,
               searchTextController: searchTextController,
               onChangedF: (value) async {
-                productsList = await BlocProvider.of<ProductsCubit>(context)
-                    .searchForProduct(productTitle: value.trim());
-
+                //If i remove the condition it will return all products if the search text is empty
+                if (value.isNotEmpty) {
+                  productsList = await BlocProvider.of<ProductsCubit>(context)
+                          .searchForProduct(productTitle: value.trim()) ??
+                      [];
+                } else {
+                  productsList = [];
+                }
+                log(productsList.length.toString());
                 setState(() {});
+              },
+              clearFieldF: () {
+                setState(() {
+                  productsList = [];
+                  searchTextController.clear();
+                  FocusScope.of(context).unfocus();
+                });
               }),
           const SizedBox(
             height: 20,
           ),
+          if (productsList.isEmpty && searchTextController.text.isNotEmpty)
+            const Text('لم يتم العثور على نتائج'),
           Expanded(
             child: ListView.builder(
               itemCount: productsList.length,
@@ -58,76 +93,8 @@ class _SearchViewState extends State<SearchView> {
                 return SearchitemCard(productModel: productsList[index]);
               },
             ),
-          )
-        ]),
-      ),
-    );
-  }
-}
-
-class SearchitemCard extends StatelessWidget {
-  const SearchitemCard({super.key, required this.productModel});
-  final ProductModel productModel;
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: Colors.grey[100],
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      productModel.productTitle,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        RichText(
-                          text: TextSpan(children: [
-                            TextSpan(
-                                text: "JOD ",
-                                style: DefaultTextStyle.of(context)
-                                    .style
-                                    .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12)),
-                            TextSpan(
-                              text: productModel.productPrice,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                fontSize: 18,
-                              ),
-                            ),
-                          ]),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const Spacer(),
-              Container(
-                  color: Colors.white,
-                  width: getScreenWidth(context) * .25,
-                  height: getScreenHight(context) * .15,
-                  child: Image.network(
-                    productModel.productImageUrl,
-                  )),
-            ],
           ),
-        ),
+        ]),
       ),
     );
   }
